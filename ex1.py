@@ -1,2 +1,2 @@
 import streamlit as st
-st.title('나의 첫 streamlit app')
+st.title('아아아아아아아이스크림')
