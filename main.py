@@ -57,9 +57,9 @@ if selected_mbti:
 
     st.success("🌟 자신만의 장점을 살려 꿈을 펼쳐보세요! 🌍✨")
 
-    # 음식 떨어지는 애니메이션 (HTML + CSS)
+    # 음식 떨어지는 애니메이션 (한 번만 실행)
     falling_foods = "".join(
-        f"<div class='food' style='left:{random.randint(0,90)}%; animation-delay:{random.uniform(0,3)}s'>{random.choice(food_emojis)}</div>"
+        f"<div class='food' style='left:{random.randint(0,90)}%; animation-delay:{random.uniform(0,2)}s'>{random.choice(food_emojis)}</div>"
         for _ in range(30)
     )
 
@@ -79,7 +79,7 @@ if selected_mbti:
             position: absolute;
             top: -50px;
             font-size: 2rem;
-            animation: fall 5s linear infinite;
+            animation: fall 5s linear forwards;
         }}
         @keyframes fall {{
             0% {{ transform: translateY(0); opacity: 1; }}
