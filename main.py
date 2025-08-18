@@ -21,6 +21,9 @@ mbti_jobs = {
     "ESFP": ["🎬 배우", "🎉 이벤트 플래너", "🎙 방송인", "🧳 여행 가이드"],
 }
 
+# 🍕🍩🍦 음식 이모지 모음
+food_emojis = ["🍕", "🍔", "🍟", "🌭", "🍣", "🍜", "🍦", "🍩", "🍫", "🍪", "🥞", "🍓", "🍉", "🍇"]
+
 # 페이지 설정
 st.set_page_config(page_title="MBTI 진로 추천 🎯", page_icon="✨", layout="centered")
 
@@ -53,4 +56,39 @@ if selected_mbti:
         st.markdown(f"👉 {job}")
 
     st.success("🌟 자신만의 장점을 살려 꿈을 펼쳐보세요! 🌍✨")
-    st.balloons()
+
+    # 음식 떨어지는 애니메이션 (HTML + CSS)
+    falling_foods = "".join(
+        f"<div class='food' style='left:{random.randint(0,90)}%; animation-delay:{random.uniform(0,3)}s'>{random.choice(food_emojis)}</div>"
+        for _ in range(30)
+    )
+
+    st.markdown(
+        f"""
+        <style>
+        .falling-container {{
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+        }}
+        .food {{
+            position: absolute;
+            top: -50px;
+            font-size: 2rem;
+            animation: fall 5s linear infinite;
+        }}
+        @keyframes fall {{
+            0% {{ transform: translateY(0); opacity: 1; }}
+            100% {{ transform: translateY(100vh); opacity: 0; }}
+        }}
+        </style>
+        <div class="falling-container">
+            {falling_foods}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
