@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+import uuid
 
 # MBTI별 직업 추천 데이터 (16유형 모두)
 mbti_jobs = {
@@ -57,19 +58,21 @@ if selected_mbti:
 
     st.success("🌟 자신만의 장점을 살려 꿈을 펼쳐보세요! 🌍✨")
 
-    # 🎉 음식 떨어지는 애니메이션 (한 번, 개수 많게, 속도 다양하게)
+    # 🎉 음식 떨어지는 애니메이션 (한 번, MBTI 바뀔 때마다 새로 실행)
     falling_foods = "".join(
         f"<div class='food' style='left:{random.randint(0,95)}%; "
         f"animation-delay:{random.uniform(0,3)}s; "
         f"animation-duration:{random.uniform(3,8)}s; "
         f"font-size:{random.randint(20,45)}px;'>{random.choice(food_emojis)}</div>"
-        for _ in range(100)   # 음식 개수 (많게!)
+        for _ in range(100)   # 음식 개수 넉넉하게
     )
+
+    unique_key = str(uuid.uuid4())  # 매번 고유 key 생성
 
     st.markdown(
         f"""
         <style>
-        .falling-container {{
+        .falling-container-{unique_key} {{
             position: fixed;
             top: 0;
             left: 0;
@@ -88,7 +91,7 @@ if selected_mbti:
             100% {{ transform: translateY(100vh); opacity: 0; }}
         }}
         </style>
-        <div class="falling-container">
+        <div class="falling-container-{unique_key}">
             {falling_foods}
         </div>
         """,
