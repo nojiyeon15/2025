@@ -57,13 +57,13 @@ if selected_mbti:
 
     st.success("🌟 자신만의 장점을 살려 꿈을 펼쳐보세요! 🌍✨")
 
-    # 음식 떨어지는 애니메이션 (속도 다양하게)
+    # 🎉 음식 떨어지는 애니메이션 (한 번, 개수 많게, 속도 다양하게)
     falling_foods = "".join(
-        f"<div class='food' style='left:{random.randint(0,90)}%; "
-        f"animation-delay:{random.uniform(0,2)}s; "
-        f"animation-duration:{random.uniform(3,7)}s; "
-        f"font-size:{random.randint(20,40)}px;'>{random.choice(food_emojis)}</div>"
-        for _ in range(40)
+        f"<div class='food' style='left:{random.randint(0,95)}%; "
+        f"animation-delay:{random.uniform(0,3)}s; "
+        f"animation-duration:{random.uniform(3,8)}s; "
+        f"font-size:{random.randint(20,45)}px;'>{random.choice(food_emojis)}</div>"
+        for _ in range(100)   # 음식 개수 (많게!)
     )
 
     st.markdown(
