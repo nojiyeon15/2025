@@ -52,7 +52,7 @@ if st.session_state.page == "form":
 
         # 페이지 전환
         st.session_state.page = "result"
-        st.experimental_rerun()
+        st.rerun()
 
 # ------------------------------
 # 2️⃣ 결과 페이지
@@ -96,4 +96,4 @@ elif st.session_state.page == "result":
     # 다시 하기 버튼
     if st.button("🔄 다시 검사하기"):
         st.session_state.page = "form"
-        st.experimental_rerun()
+        st.rerun()
