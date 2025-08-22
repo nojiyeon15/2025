@@ -16,7 +16,7 @@ if st.session_state.page == "form":
 
     st.header("📋 설문 질문")
 
-    # 6개 이상의 간접 질문
+    # 7개의 간접 질문
     q1 = st.radio("최근 잠들기 어렵거나 자주 깨나요?", ["전혀 아니다", "가끔 그렇다", "자주 그렇다"])
     q2 = st.radio("식사 시간이 불규칙한 편인가요?", ["전혀 아니다", "가끔 그렇다", "자주 그렇다"])
     q3 = st.radio("작은 일에도 쉽게 짜증이 나나요?", ["전혀 아니다", "가끔 그렇다", "자주 그렇다"])
@@ -43,14 +43,15 @@ elif st.session_state.page == "result":
     st.title("💡 스트레스 관리 솔루션 결과")
 
     score = st.session_state.score
+    st.subheader(f"당신의 스트레스 점수: {score} / 14")  # 최대 점수 14
 
-    # 스트레스 수준 피드백
+    # 스트레스 정도 안내
     if score <= 5:
-        st.success("스트레스 수준이 낮습니다. 현재 상태를 유지하세요! 😌")
+        st.success("스트레스 수준: 낮음 😌\n현재 상태를 유지하면 좋아요.")
     elif 6 <= score <= 10:
-        st.warning("중간 정도의 스트레스가 감지되었습니다. 작은 휴식이 필요해요.")
+        st.warning("스트레스 수준: 중간 ⚠️\n작은 휴식과 관리가 필요합니다.")
     else:
-        st.error("스트레스 수준이 높습니다. 적극적인 관리가 필요해요! 🛑")
+        st.error("스트레스 수준: 높음 🛑\n적극적인 관리가 필요합니다.")
 
     # 맞춤형 추천
     st.subheader("✨ 맞춤형 스트레스 해소법 추천")
@@ -59,9 +60,11 @@ elif st.session_state.page == "result":
         st.write("- 좋아하는 음악을 들으며 마음을 정리해보세요 🎶")
     elif 6 <= score <= 10:
         st.write("- 짧은 명상이나 호흡법으로 마음을 진정시키세요 🧘")
+        st.write("  [5분 호흡 명상 영상 보기](https://www.youtube.com/watch?v=inpok4MKVLM)")
         st.write("- 충분한 수면과 규칙적인 식사로 생활 패턴을 안정화하세요 🛌")
     else:
         st.write("- 적극적인 운동과 명상으로 스트레스 해소를 시도하세요 💪")
+        st.write("  [10분 명상/호흡법 영상 보기](https://www.youtube.com/watch?v=O-6f5wQXSu8)")
         st.write("- 필요시 친구, 가족, 전문가와 솔직한 대화를 해보세요 🗣️")
         st.write("- 일상에서 작은 휴식 시간을 자주 가져보세요 🍵")
 
